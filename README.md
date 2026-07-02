@@ -1,8 +1,37 @@
 # kaoyanzhengzhishuati
 考研政治自制刷题GUI
 
-已更新最新题库，包含肖4肖8以及模拟卷
-已更新windows可执行程序，点击[下载](https://github.com/ygxiuming/kaoyanzhengzhishuati/releases/tag/v2.0)
+## Web 版启动
+
+安装依赖：
+
+```bash
+pip install -r requirements.txt
+```
+
+启动局域网刷题服务：
+
+```bash
+python app.py
+```
+
+也可以直接双击 `start_web.bat`。
+
+启动后命令行会显示两个地址：
+
+- 本机访问：`http://127.0.0.1:5000`
+- 局域网访问：`http://你的电脑IP:5000`
+
+同一 Wi-Fi 或同一局域网里的手机、平板、电脑打开局域网地址即可进入。如果 Windows 防火墙弹窗，请允许 Python 访问专用网络。
+
+## 新功能
+
+- 收藏集：点击题目右上方“收藏”，PC 和手机访问同一个服务时会同步显示；收藏会保留题库、分类、章节/试卷和题号。
+- 解析高亮条例库：查看解析时，会自动高亮命中的重点术语；关键词在 `static/highlight_rules.json` 中维护。
+- 高亮收集：查看解析后，选中解析里的文字，点击“收集高亮”，可加入已有分类或新建分类。
+- 收藏数据保存在 `data/favorites.json`，换设备访问同一个局域网服务即可同步。
+- 上次位置：切换题库、章节或题号时会自动保存到 `data/progress.json`，下次打开会回到最近刷到的位置。
+
 
 
 ##  初衷

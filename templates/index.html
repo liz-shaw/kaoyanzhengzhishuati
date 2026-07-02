@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>考研政治刷题</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}">
+</head>
+<body>
+  <main class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="brand-mark">政</span>
+        <div>
+          <h1>考研政治刷题</h1>
+          <p>局域网打开即可进入</p>
+        </div>
+      </div>
+
+      <label class="field">
+        <span>题库</span>
+        <select id="bankSelect"></select>
+      </label>
+
+      <label class="field">
+        <span>分类</span>
+        <select id="partSelect"></select>
+      </label>
+
+      <label class="field">
+        <span>章节/试卷</span>
+        <select id="sectionSelect"></select>
+      </label>
+
+      <label class="field">
+        <span>题号</span>
+        <select id="numberSelect"></select>
+      </label>
+
+      <div class="stats">
+        <div>
+          <strong id="currentNumber">0</strong>
+          <span>当前题号</span>
+        </div>
+        <div>
+          <strong id="totalNumber">0</strong>
+          <span>本组题量</span>
+        </div>
+        <div>
+          <strong id="completedNumber">0</strong>
+          <span>已做题数</span>
+        </div>
+        <div>
+          <strong id="correctRate">0%</strong>
+          <span>正确率</span>
+        </div>
+      </div>
+
+      <section class="favorite-box">
+        <div class="side-section-head">
+          <strong>收藏集</strong>
+          <span id="favoriteCount">0</span>
+        </div>
+        <div id="favoriteList" class="favorite-list"></div>
+      </section>
+
+      <section class="highlight-box">
+        <div class="side-section-head">
+          <strong>条例库</strong>
+          <span id="highlightRuleCount">0</span>
+        </div>
+        <div id="highlightRuleList" class="highlight-rule-list"></div>
+      </section>
+    </aside>
+
+    <section class="workspace">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow" id="bankTitle">正在加载</p>
+          <h2 id="sectionTitle">请选择题库</h2>
+        </div>
+        <div class="nav-actions">
+          <button id="returnBtn" type="button" hidden>返回原题</button>
+          <button id="favoriteBtn" type="button">收藏</button>
+          <button id="prevBtn" type="button">上一题</button>
+          <button id="nextBtn" type="button">下一题</button>
+        </div>
+      </header>
+
+      <article class="question-panel">
+        <div class="question-meta">
+          <span id="questionType">题型</span>
+          <span id="answerState">未作答</span>
+        </div>
+        <div id="questionText" class="question-text">请选择一个题库开始刷题。</div>
+        <div id="options" class="options"></div>
+      </article>
+
+      <div class="actionbar">
+        <button id="mobileReturnBtn" type="button" hidden>返回原题</button>
+        <button class="mobile-nav-btn" id="mobilePrevBtn" type="button">上一题</button>
+        <button id="submitBtn" class="primary" type="button">提交答案</button>
+        <button id="answerBtn" type="button">查看解析</button>
+        <button id="collectHighlightBtn" type="button" disabled>收集高亮</button>
+        <button class="mobile-nav-btn" id="mobileNextBtn" type="button">下一题</button>
+      </div>
+
+      <section id="resultPanel" class="result-panel" hidden>
+        <div class="result-head">
+          <strong id="resultTitle">答案解析</strong>
+          <span id="rightAnswer"></span>
+        </div>
+        <div id="highlightLibrary" class="highlight-library"></div>
+        <div class="collect-strip">
+          <div>
+            <strong>高亮收集</strong>
+            <span id="selectionPreview">选中解析里的文字后，这里会显示待收集内容。</span>
+          </div>
+          <button id="inlineCollectHighlightBtn" type="button">收集选中文字</button>
+        </div>
+        <div id="explanation" class="explanation"></div>
+      </section>
+    </section>
+  </main>
+
+  <dialog id="highlightDialog" class="highlight-dialog">
+    <form method="dialog" class="highlight-form">
+      <div>
+        <strong>收集到条例库</strong>
+        <p id="selectedHighlightText"></p>
+      </div>
+      <label class="modal-field">
+        <span>已有分类</span>
+        <select id="highlightLabelSelect"></select>
+      </label>
+      <label class="modal-field">
+        <span>新分类</span>
+        <input id="highlightLabelInput" type="text" placeholder="例如：毛中特重点">
+      </label>
+      <div class="dialog-actions">
+        <button id="cancelHighlightBtn" type="button">取消</button>
+        <button id="saveHighlightBtn" class="primary" type="button">保存</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
